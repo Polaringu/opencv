@@ -10,13 +10,22 @@ pipeline {
 			}
 		}
 
-		stage('Build') {
+		stage('Make') {
 
 			steps {
 				sh """
         mkdir build
         cd build
         cmake ..
+        """
+			}
+		}
+        
+        stage('Build') {
+
+			steps {
+				sh """
+        cd build
         cmake --build . --config Release
         """
 			}
